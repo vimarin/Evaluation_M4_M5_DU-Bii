@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Viviana MARIN-ESTEBAN" />
+
+<meta name="date" content="2020-09-01" />
+
+<title>Evaluation finale Du-Bii modules 4 et 5</title>
+
+<script src="00_Devoir_M4_M5_final_files/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="00_Devoir_M4_M5_final_files/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="00_Devoir_M4_M5_final_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="00_Devoir_M4_M5_final_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="00_Devoir_M4_M5_final_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="00_Devoir_M4_M5_final_files/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="00_Devoir_M4_M5_final_files/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="00_Devoir_M4_M5_final_files/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="00_Devoir_M4_M5_final_files/navigation-1.1/tabsets.js"></script>
+<script src="00_Devoir_M4_M5_final_files/navigation-1.1/codefolding.js"></script>
+<script src="00_Devoir_M4_M5_final_files/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  { color: #cccccc; background-color: #303030; }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ffcfaf; } /* Alert */
+code span.an { color: #7f9f7f; font-weight: bold; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bn { color: #dca3a3; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #f0dfaf; } /* ControlFlow */
+code span.ch { color: #dca3a3; } /* Char */
+code span.cn { color: #dca3a3; font-weight: bold; } /* Constant */
+code span.co { color: #7f9f7f; } /* Comment */
+code span.cv { color: #7f9f7f; font-weight: bold; } /* CommentVar */
+code span.do { color: #7f9f7f; } /* Documentation */
+code span.dt { color: #dfdfbf; } /* DataType */
+code span.dv { color: #dcdccc; } /* DecVal */
+code span.er { color: #c3bf9f; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #c0bed1; } /* Float */
+code span.fu { color: #efef8f; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #7f9f7f; font-weight: bold; } /* Information */
+code span.kw { color: #f0dfaf; } /* Keyword */
+code span.op { color: #f0efd0; } /* Operator */
+code span.ot { color: #efef8f; } /* Other */
+code span.pp { color: #ffcfaf; font-weight: bold; } /* Preprocessor */
+code span.sc { color: #dca3a3; } /* SpecialChar */
+code span.ss { color: #cc9393; } /* SpecialString */
+code span.st { color: #cc9393; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #cc9393; } /* VerbatimString */
+code span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
+
+.sourceCode .row {
+  width: 100%;
+}
+.sourceCode {
+  overflow-x: auto;
+}
+.code-folding-btn {
+  margin-right: -30px;
+}
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="css/styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Evaluation finale Du-Bii modules 4 et 5</h1>
+<h3 class="subtitle">Control qualité et alignement au génome de référence des données de reséquençage génomique de bactéries du sol - étude d’un cas</h3>
+<h4 class="author">Viviana MARIN-ESTEBAN</h4>
+<h4 class="date">2020-09-01</h4>
+
+</div>
+
+
+<!-- use newpage for latex only -->
+<div id="objectif" class="section level1">
+<h1>Objectif</h1>
+<p>Faire une analyse simple, de données de reséquençage d’un génome bactérien. Le séquençage a été réalisé en paired-end et les deux fichiers des données seront récupérés en format fastq. Ces données sont issus du travail publié dans l’article : “Complete Genome Sequences of 13 Bacillus subtilis Soil Isolates for Studying Secondary Metabolite Diversity” (<a href="doi:10.1128/MRA.01406-19" class="uri">doi:10.1128/MRA.01406-19</a>)</p>
+<p>Ce rapport devra être mis à notre disposition dans un dépôt public GitHub. Les analyses devront pouvoir être rejouées sur le cluster de l’IFB.</p>
+</div>
+<div id="etapes" class="section level1">
+<h1>Etapes</h1>
+<div id="création-des-dossiers-de-travail" class="section level2">
+<h2>Création des dossiers de travail</h2>
+<p>Sur le serveur de l’IFB, créer les dossiers pour les différentes étapes des analyses à faire :</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">ssh</span> [USER_NAME]@core.cluster.france-bioinformatique.fr</span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">mkdir</span> M4_Eval</span>
+<span id="cb1-5"><a href="#cb1-5"></a></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="fu">mkdir</span> -p ~/M4_Eval/FASTQ</span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="fu">mkdir</span> -p ~/M4_Eval/CLEANING</span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="fu">mkdir</span> -p ~/M4_Eval/MAPPING</span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="fu">mkdir</span> -p ~/M4_Eval/QC</span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="fu">mkdir</span> -p ~/M4_Eval/INPUT_genome_files</span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="fu">mkdir</span> -p ~/M4_Eval/gene_trmNF</span></code></pre></div>
+</div>
+<div id="récupération-des-données" class="section level2">
+<h2>Récupération des données</h2>
+<ul>
+<li>Récupération des données brutes de séquençage (format fastq non compressé), à partir du site European Nucleotide Archive, avec l’outil sra-toolkit</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="ex">module</span> load  sra-tools</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="ex">srun</span> fasterq-dump -S -p SRR10390685 --outdir ~/M4_Eval/FASTQ --threads 1</span></code></pre></div>
+<ul>
+<li>Compresser les fichiers FASTQ, se positionner dans le dossier FASTQ</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="bu">cd</span> ~/M4_Eval/FASTQ</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">gzip</span> *.fastq</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">ls</span> -ltrh ~/M4_Eval/FASTQ/</span>
+<span id="cb4-2"><a href="#cb4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="ex">total</span> 1.3G</span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="ex">-rw-rw-r--</span> 1 vmarinesteban vmarinesteban 627M Aug 28 18:21 SRR10390685_2.fastq.gz</span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="ex">-rw-rw-r--</span> 1 vmarinesteban vmarinesteban 617M Aug 28 18:21 SRR10390685_1.fastq.gz</span></code></pre></div>
+</div>
+<div id="control-qualité-des-fichiers-fastq" class="section level2">
+<h2>Control qualité des fichiers FASTQ</h2>
+<p>Cette analyse permet un aperçu des donnés non traitées pour identifier des problèmes de qualité et de biais de séquences qui pourraient impacter ou fausser les analyses en aval.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="bu">cd</span> ~</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="ex">module</span> load fastqc</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="ex">srun</span> --cpus-per-task 8 fastqc ~/M4_Eval/FASTQ/SRR10390685_1.fastq.gz -o ~/M4_Eval/QC/ -t 8</span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="ex">srun</span> --cpus-per-task 8 fastqc ~/M4_Eval/FASTQ/SRR10390685_2.fastq.gz -o ~/M4_Eval/QC/ -t 8</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">ls</span> -ltrh ~/M4_Eval/QC/</span>
+<span id="cb6-2"><a href="#cb6-2"></a></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="ex">total</span> 1.7M</span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="ex">-rw-rw-r--</span> 1 vmarinesteban vmarinesteban 291K Aug 28 19:06 SRR10390685_1_fastqc.zip</span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="ex">-rw-rw-r--</span> 1 vmarinesteban vmarinesteban 548K Aug 28 19:06 SRR10390685_1_fastqc.html</span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="ex">-rw-rw-r--</span> 1 vmarinesteban vmarinesteban 312K Aug 28 19:08 SRR10390685_2_fastqc.zip</span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="ex">-rw-rw-r--</span> 1 vmarinesteban vmarinesteban 561K Aug 28 19:08 SRR10390685_2_fastqc.html</span></code></pre></div>
+<div id="inspection-des-résultats" class="section level3">
+<h3>Inspection des résultats :</h3>
+<p>Voir les rapports HTML générés par l’outil fastq : fichiers SRR10390685_1_fastqc.html et SRR10390685_2_fastqc.html</p>
+<p>Pour SRR10390685_1_fastqc on trouve :</p>
+<ul>
+<li><p>7066055 reads, de taille entre 35 et 151 nucléotides, avec 43 % de contenu GC.</p></li>
+<li><p>Per base quality: superior ou égale à 30 dans tout le long de la séquence</p></li>
+<li><p>Per sequence quality scores : ne montre pas une distribution anormale des la qualité des reads. La courbe commence à se décoller du sol à une qualité de 24, et plus de 90% des séquences ont une qualité &gt; 28.</p></li>
+<li><p>Per base content : MODULE AVEC FAIL car une distribution anormale dans la position 2 et 3 des reads est signalé. Dans ces positions la distribution de T est de ~45 % et ~35 % dans l’ensemble des reads, respectivement. Cependant, ce problème est bien localisé dans un but des séquences. Ce problème sera possible de fixer dans l’étape de nettoyage.</p></li>
+<li><p>Per séquence GC content : le contenu GC sur toute la longueur de reads n’est pas anormal, par rapport au modèle calculé.</p></li>
+<li><p>Per base N content : l’assignation globale de nucléotides dans les reads est fiable.</p></li>
+<li><p>Sequence Length Distribution : MODULE AVEC AVERTISSEMENT car distribution des longueurs des reads pas suffisamment homogène. Cependant, la plus part des reads ont autour de 148 à 152 nucléotides. Ce problème sera fixé dans l’étape de nettoyage.</p></li>
+<li><p>Sequence Duplication Levels : MODULE AVEC AVERTISSEMENT, les séquences non uniques représentent entre 20% et 50% du total. La perte globale attendue de séquences sera de 42.7 % si la bibliothèque est dédupliquée.</p></li>
+<li><p>Overrepresented sequences : MODULE AVEC AVERTISSEMENT. Au moins une séquence d’au moins 20 bp représente 0,1% à 1% des séquences. Dans ce cas c’est une séquence NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN qui représente 0.12 % des séquences. Aucune source possible de contaminant est proposée.</p></li>
+<li><p>Adapter Content : le pourcentage cumulé des séquences d’adaptateurs est 0%.</p></li>
+</ul>
+<p>Pour SRR10390685_2_fastqc on trouve des résultats similaires à ceux de SRR10390685_1_fastqc :</p>
+<ul>
+<li><p>7066055 reads, de taille entre 130 et 151 nucléotides, avec 43 % de contenu GC.</p></li>
+<li><p>Per base quality: superior ou égale à 30 dans tout le long de la séquence</p></li>
+<li><p>Per sequence quality scores : ne montre pas une distribution anormale des la qualité des reads. La courbe commence à se décoller du sol à une qualité de 22, et plus de 90% des séquences ont une qualité &gt; 28.</p></li>
+<li><p>Per base content : MODULE AVEC FAIL car une distribution anormale dans la position 2 et 3 des reads est signalé. Dans ces positions la distribution de T est de ~45 % et ~35 % dans l’ensemble des reads, respectivement. Cependant, ce problème est bien localisé dans un but des séquences. Ce problème sera possible de fixer dans l’étape de nettoyage.</p></li>
+<li><p>Per séquence GC content : le contenu GC sur toute la longueur de reads n’est pas anormal, par rapport au modèle calculé.</p></li>
+<li><p>Per base N content : l’assignation globale de nucléotides dans les reads est fiable.</p></li>
+<li><p>Sequence Length Distribution : MODULE AVEC AVERTISSEMENT car distribution des longueurs des reads pas suffissament homogène. Cependant, la plus part des reads ont autour de 150 à 152 nucléotides, avec un pic à 151 nucléotides. Ce problème sera fixé dans l’étape de nettoyage.</p></li>
+<li><p>Sequence Duplication Levels : MODULE AVEC AVERTISSEMENT, les séquences non uniques représentent entre 20% et 50% du total. La perte globale attendue de séquences sera de 39.01% si la bibliothèque est dédupliquée.</p></li>
+<li><p>Overrepresented sequences : MODULE AVEC AVERTISSEMENT. Au moins une sequence d’au moins 20 bp représente 0,1% à 1% des sequences. Dans ce cas c’est une sequence GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG qui représente 0.11 % des séquences. Aucune source possible de contaminant est proposée.</p></li>
+<li><p>Adapter Content : le pourcentage cumulé des séquences Illumina Universal Adapter est &lt;5% dans les reads de &gt;110 nucléotides. Ce problème sera certainement fixé dans l’étape de nettoyage.</p></li>
+</ul>
+</div>
+<div id="réponses-aux-questions-posées" class="section level3">
+<h3><strong>Réponses aux questions posées :</strong></h3>
+<ol style="list-style-type: decimal">
+<li>La qualité des bases vous paraît-elle satisfaisante ? Pourquoi ?</li>
+</ol>
+<ul>
+<li><p><em>En vue des résultats de l’analyse de qualité avec FASTQC (fichiers SRR10390685_1_fastqc.html et SRR10390685_2_fastqc.html), les séquences des fichiers fastq sont globalement de bonne qualité. Cependant parmi les 9 grands modules évalués, nous avons vu 3 signaux d’avertissement et un signal de FAIL.</em></p></li>
+<li><p><em>L’avertissement que je trouve le plus critique est le niveau de duplications de séquences (séquences identiques), qui est aux alentours de 40%, ce qui ramènerait à une réduction de la taille des librairies de ~7 millions de reads ver ~4 millions. Cette profondeur reste encore bonne, en considérant que l’objectif de l’étude semble être d’avoir de bonnes couverture génomique et qualité de séquençage pour caractériser des isolats différents d’une espèce bactérienne dans le sol.</em></p></li>
+<li><p><em>Les autres problèmes soulevés par l’analyse FASTQC me semblent gérables dans l’étape de nettoyage. Cependant, plus tard nous verrons que le nettoyage que j’ai fait n’a pas été très astringent et seulement peu de séquences ont été enlevées et les élagages des extrémités ont fait le compromis de ramené les autres problèmes à des niveaux acceptables sans les éliminer totalement, pour garder la meilleur taille et le nombre plus fort de reads (voire le fichier multiqc_report.html)</em></p></li>
+<li><p><em>La stratégie de séquençage est de paired-ends, ce qui permettra plus de fiabilité au moment d’aligner les séquences sur le génome de référence. Chaque séquençage à été fait avec une profondeur globale de plus de 7 millions de reads.</em></p></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Quelle est la profondeur de séquençage (calculée par rapport à la taille du génome de référence) ?</li>
+</ol>
+<ul>
+<li><p><em>La taille du génome de référence est de 4215606 paires de bases. Ainsi, si on fait une approximation grossière (avant nettoyage) de 7 millions de read par séquençage, avec une taille moyenne de 140 nucléotides par read, il y aurait ~980 millions de bases séquencées.</em></p></li>
+<li><p><em>Par rapport aux ~4,2 million de bases du génome, chaque séquençage aurait une profondeur de</em> <strong>245 équivalents génome</strong>, <em>ce qui équivaut à une bonne profondeur de séquençage, avec, en théorie, 245 chances de que chaque nucléotide soit séquencé dans des reads différents, chevauchants. Le séquençage paired-end augmente la profondeur de séquençage et la certitude / qualité des alignements.</em></p></li>
+</ul>
+</div>
+</div>
+<div id="nettoyage-des-reads-avec-fastp" class="section level2">
+<h2>Nettoyage des reads avec FASTP</h2>
+<p>Cette étape permet de corriger des problèmes de qualité et de biais de séquences déjà identifiés dans l’étape précédente. Par exemple : enlever des séquences d’adaptateurs, des séquences surreprésentés, de couper les extrémités des reads avec contenu distribution anormal de nucléotides.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="ex">module</span> load fastp</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="bu">cd</span> ~/M4_Eval/</span>
+<span id="cb7-3"><a href="#cb7-3"></a></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="ex">srun</span> --cpus-per-task 8 fastp \</span>
+<span id="cb7-5"><a href="#cb7-5"></a> --in1 FASTQ/SRR10390685_1.fastq.gz \</span>
+<span id="cb7-6"><a href="#cb7-6"></a> --in2 FASTQ/SRR10390685_2.fastq.gz \</span>
+<span id="cb7-7"><a href="#cb7-7"></a> -l 100 \</span>
+<span id="cb7-8"><a href="#cb7-8"></a> --out1 CLEANING/SRR10390685_1.cleaned_filtered.fastq.gz \</span>
+<span id="cb7-9"><a href="#cb7-9"></a> --out2 CLEANING/SRR10390685_2.cleaned_filtered.fastq.gz \</span>
+<span id="cb7-10"><a href="#cb7-10"></a> --unpaired1 CLEANING/SRR10390685_singles.fastq.gz \</span>
+<span id="cb7-11"><a href="#cb7-11"></a> --unpaired2 CLEANING/SRR10390685_singles.fastq.gz \</span>
+<span id="cb7-12"><a href="#cb7-12"></a> -w 1 \</span>
+<span id="cb7-13"><a href="#cb7-13"></a> -j CLEANING/fastp.json \</span>
+<span id="cb7-14"><a href="#cb7-14"></a> -h CLEANING/fastp.html \</span>
+<span id="cb7-15"><a href="#cb7-15"></a> -t 8</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">ls</span> -ltrh ~/M4_Eval/CLEANING/</span>
+<span id="cb8-2"><a href="#cb8-2"></a></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="ex">total</span> 1.2G</span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="ex">-rw-rw-r--</span> 1 vmarinesteban vmarinesteban 132K Aug 28 22:49 fastp.json</span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="ex">-rw-rw-r--</span> 1 vmarinesteban vmarinesteban 475K Aug 28 22:49 fastp.html</span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="ex">-rw-rw-r--</span> 1 vmarinesteban vmarinesteban  15M Aug 28 22:49 SRR10390685_singles.fastq.gz</span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="ex">-rw-rw-r--</span> 1 vmarinesteban vmarinesteban 609M Aug 28 22:49 SRR10390685_2.cleaned_filtered.fastq.gz</span>
+<span id="cb8-8"><a href="#cb8-8"></a><span class="ex">-rw-rw-r--</span> 1 vmarinesteban vmarinesteban 604M Aug 28 22:49 SRR10390685_1.cleaned_filtered.fastq.gz</span></code></pre></div>
+<div id="inspection-des-résultats-du-nettoyage-avec-fastp" class="section level3">
+<h3>Inspection des résultats du nettoyage avec fastp</h3>
+<p>Un rapport résumé est affiché à l’écran à la fin de la procédure et un autre rapport plus complet est généré dans un fichier .json et un autre .html. Au total, 97.015110% des reads ont été retenus. Le nettoyage a été équilibré dans les deux fichiers. Au total, en partant de 14132110 reads, 421828 ont été exclues, c’est à dire moins de 3% des reads (2.985%). Les reads ont été élaguées, passant d’une longueur moyenne avant nettoyage de 149bp (fichier _1) et 150bp (fichier _2) à une longueur moyenne de 141bp dans les deux cas.</p>
+<ul>
+<li>Ceci est le rapport affiché à l’écran à la fin du nettoyage :</li>
+</ul>
+<p>Read1 before filtering: total reads: 7066055 total bases: 1056334498 Q20 bases: 989425011(93.6659%) Q30 bases: 950850058(90.0141%)</p>
+<p>Read2 before filtering: total reads: 7066055 total bases: 1062807718 Q20 bases: 975887037(91.8216%) Q30 bases: 933776181(87.8594%)</p>
+<p>Read1 after filtering: total reads: 6855141 total bases: 972593291 Q20 bases: 918080212(94.3951%) Q30 bases: 885808239(91.0769%)</p>
+<p>Read2 aftering filtering: total reads: 6855141 total bases: 972626525 Q20 bases: 906379990(93.1889%) Q30 bases: 872179928(89.6726%)</p>
+<p>Filtering result: reads passed filter: 13710282 reads failed due to low quality: 356126 reads failed due to too many N: 4092 reads failed due to too short: 61610 reads with adapter trimmed: 352768 bases trimmed due to adapters: 5499206</p>
+<p>Duplication rate: 1.17555%</p>
+<p>Insert size peak (evaluated by paired-end reads): 250</p>
+<p>JSON report: CLEANING/fastp.json HTML report: CLEANING/fastp.html</p>
+<ul>
+<li>Et celui-ci est le résumé initial dans le rapport fastp.html généré suite au processus de nettoyage :</li>
+</ul>
+<p>fastp version: 0.20.0 sequencing: paired end (151 cycles + 151 cycles) mean length before filtering: 149bp, 150bp mean length after filtering: 141bp, 141bp duplication rate: 1.175552% Insert size peak: 250</p>
+<p>Before filtering total reads: 14.132110 M total bases: 2.119142 G Q20 bases: 1.965312 G (92.740923%) Q30 bases: 1.884626 G (88.933448%) GC content: 43.657172%</p>
+<p>After filtering total reads: 13.710282 M total bases: 1.945220 G Q20 bases: 1.824460 G (93.791981%) Q30 bases: 1.757988 G (90.374782%) GC content: 43.539890%</p>
+<p>Filtering result reads passed filters: 13.710282 M (97.015110%) reads with low quality: 356.126000 K (2.519978%) reads with too many N: 4.092000 K (0.028955%) reads too short: 61.610000 K (0.435958%)</p>
+</div>
+<div id="réponses-aux-questions-posées-1" class="section level3">
+<h3><strong>Réponses aux questions posées :</strong></h3>
+<ol style="list-style-type: decimal">
+<li>Quel pourcentage de reads sont filtrés et pourquoi ?</li>
+</ol>
+<p><em>Una réponse rapide à cette question est donné dans le dernier paragraphe du résumé initial du fichier fastp.html (voir dernier paragraphe avant cette section) :</em></p>
+<p><em>Le pourcentage de reads filtrées (exclues) a été de ~2.985%. En détail, 2.52% des reads ont été exclues par qualité basse, 0.029% de reads par un pourcentage fort de nucléotides incertains (N) et 0.436% en raison d’une langueur trop petite.</em></p>
+</div>
+<div id="un-rapport-multiqqc" class="section level3">
+<h3>Un rapport MultiqQC</h3>
+<p>Regroupe les informations / rapports des procédures FastQC, Fastp (et d’autres Trimmomactic, Cutadapt, etc..).</p>
+<p>Le rapport généré (multiqc_report.html) permet de voir avec le même format les analyses réalisés avec FASTQ pour les librairies avant et après le nettoyage.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="bu">cd</span> ~/M4_Eval</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="ex">module</span> load multiqc</span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="co"># export LANG=en_US.UTF-8 #ligne à ajouter si problème avec multiqc du à UTF-8 locale </span></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="ex">multiqc</span> -d . -o CLEANING</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">ls</span> -ltrh ~/M4_Eval/CLEANING/</span>
+<span id="cb10-2"><a href="#cb10-2"></a></span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="ex">total</span> 1.3G</span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="ex">-rw-rw-r--</span> 1 vmarinesteban vmarinesteban  15M Aug 28 22:49 SRR10390685_singles.fastq.gz</span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="ex">-rw-rw-r--</span> 1 vmarinesteban vmarinesteban 609M Aug 28 22:49 SRR10390685_2.cleaned_filtered.fastq.gz</span>
+<span id="cb10-6"><a href="#cb10-6"></a><span class="ex">-rw-rw-r--</span> 1 vmarinesteban vmarinesteban 604M Aug 28 22:49 SRR10390685_1.cleaned_filtered.fastq.gz</span>
+<span id="cb10-7"><a href="#cb10-7"></a><span class="ex">-rw-rw-r--</span> 1 vmarinesteban vmarinesteban 132K Aug 28 22:49 fastp.json</span>
+<span id="cb10-8"><a href="#cb10-8"></a><span class="ex">-rw-rw-r--</span> 1 vmarinesteban vmarinesteban 475K Aug 28 22:49 fastp.html</span>
+<span id="cb10-9"><a href="#cb10-9"></a><span class="ex">-rw-rw-r--</span> 1 vmarinesteban vmarinesteban 1.2M Aug 28 23:57 multiqc_report.html</span>
+<span id="cb10-10"><a href="#cb10-10"></a><span class="ex">drwxrwxr-x</span> 2 vmarinesteban vmarinesteban 1.1M Aug 28 23:57 multiqc_data</span></code></pre></div>
+</div>
+<div id="inspection-des-résultats-du-rapport-multiqqc" class="section level3">
+<h3>Inspection des résultats du rapport MultiqQC</h3>
+</div>
+</div>
+<div id="alignement-au-génome-de-référence-mapping" class="section level2">
+<h2>Alignement au génome de référence / Mapping</h2>
+<p>Alignement des reads sur le génome de référence. Les alignements sont accompagnés d’une évaluation statistique qu’informe de la probabilité d’un alignement correct.</p>
+<div id="télécharger-les-fichiers-du-génome-de-référence-formats-fasta-et-gff" class="section level3">
+<h3>Télécharger les fichiers du génome de référence (formats fasta et gff)</h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="bu">cd</span> ~/M4_Eval</span>
+<span id="cb11-2"><a href="#cb11-2"></a></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="fu">wget</span>  </span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="fu">wget</span> https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/009/045/GCF_000009045.1_ASM904v1/GCF_000009045.1_ASM904v1_genomic.gff.gz</span></code></pre></div>
+</div>
+<div id="indexation-du-génome-et-alignement" class="section level3">
+<h3>Indexation du génome et alignement</h3>
+<p>Je vais commencer par dezipper le fichier fasta du génome (.fna), dont j’aurais besoin plus tard, avec les outils bedtools. Ensuite, il faut indexer le génome de référence pour pouvoir utiliser BWA. Ensuite, l’alignement est réalisé. Enfin, je réalise l’alignement des read du séquençage sur le génome de référence.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1"></a><span class="ex">module</span> load bwa</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="ex">module</span> load samtools</span>
+<span id="cb12-3"><a href="#cb12-3"></a></span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="bu">cd</span> ~/M4_Eval/INPUT_genome_files/</span>
+<span id="cb12-5"><a href="#cb12-5"></a><span class="fu">gunzip</span> GCF_000009045.1_ASM904v1_genomic.fna</span>
+<span id="cb12-6"><a href="#cb12-6"></a><span class="ex">srun</span> bwa index GCF_000009045.1_ASM904v1_genomic.fna</span>
+<span id="cb12-7"><a href="#cb12-7"></a></span>
+<span id="cb12-8"><a href="#cb12-8"></a><span class="bu">cd</span> ~/M4_Eval/</span>
+<span id="cb12-9"><a href="#cb12-9"></a><span class="ex">srun</span> --cpus-per-task=32 bwa mem \</span>
+<span id="cb12-10"><a href="#cb12-10"></a>  INPUT_genome_files/GCF_000009045.1_ASM904v1_genomic.fna \</span>
+<span id="cb12-11"><a href="#cb12-11"></a>  CLEANING/SRR10390685_1.cleaned_filtered.fastq.gz \</span>
+<span id="cb12-12"><a href="#cb12-12"></a>  CLEANING/SRR10390685_2.cleaned_filtered.fastq.gz \</span>
+<span id="cb12-13"><a href="#cb12-13"></a>  -t 32 \</span>
+<span id="cb12-14"><a href="#cb12-14"></a>  <span class="kw">|</span> <span class="kw">\</span></span>
+<span id="cb12-15"><a href="#cb12-15"></a>  <span class="ex">samtools</span> view -hbS - <span class="op">&gt;</span> MAPPING/SRR10390685.bam</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">ls</span> -ltrh ~/M4_Eval/MAPPING/</span>
+<span id="cb13-2"><a href="#cb13-2"></a></span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="ex">total</span> 1.4G</span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="ex">-rw-rw-r--</span> 1 vmarinesteban vmarinesteban 1.4G Aug 29 02:20 SRR10390685.bam</span></code></pre></div>
+</div>
+</div>
+<div id="tri-et-indexation-du-fichier-dalignements-avec-samtools-.bam" class="section level2">
+<h2>Tri et indexation du fichier d’alignements avec SAMTOOLS (.bam)</h2>
+<p>Etape non nécessaire sauf pour le résumé statistique obtenue avec l’outil flagstat de samtools.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1"></a><span class="ex">module</span> load samtools</span>
+<span id="cb14-2"><a href="#cb14-2"></a></span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="co"># Sort BAM file</span></span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="ex">samtools</span> sort MAPPING/SRR10390685.bam -o MAPPING/SRR10390685.sorted.bam</span>
+<span id="cb14-5"><a href="#cb14-5"></a></span>
+<span id="cb14-6"><a href="#cb14-6"></a><span class="co"># Index sorted BAM file</span></span>
+<span id="cb14-7"><a href="#cb14-7"></a><span class="ex">samtools</span> index MAPPING/SRR10390685.sorted.bam</span>
+<span id="cb14-8"><a href="#cb14-8"></a></span>
+<span id="cb14-9"><a href="#cb14-9"></a><span class="co"># Get some statistics</span></span>
+<span id="cb14-10"><a href="#cb14-10"></a><span class="ex">samtools</span> flagstat MAPPING/SRR10390685.sorted.bam</span></code></pre></div>
+<p>Le rapport affiché dans l’écran suite au calcul des statistiques (samtools flagstst) :</p>
+<p>flagstat MAPPING/SRR10390685.sorted.bam 13726125 + 0 in total (QC-passed reads + QC-failed reads) 0 + 0 secondary 15843 + 0 supplementary 0 + 0 duplicates 12969706 + 0 mapped (94.49% : N/A) 13710282 + 0 paired in sequencing 6855141 + 0 read1 6855141 + 0 read2 12887940 + 0 properly paired (94.00% : N/A) 12911596 + 0 with itself and mate mapped 42267 + 0 singletons (0.31% : N/A) 0 + 0 with mate mapped to a different chr 0 + 0 with mate mapped to a different chr (mapQ&gt;=5)</p>
+<div id="réponses-aux-questions-posées-2" class="section level3">
+<h3><strong>Réponses aux questions posées :</strong></h3>
+<ol style="list-style-type: decimal">
+<li>Quel est le % de reads pairés alignés ?</li>
+</ol>
+<ul>
+<li><em>Comme indiqué par les informations issues des statistiques du fichier .bam, obtenues avec la fonction flagstat de samtools (voir paragraphe ci-dessous), </em></li>
+</ul>
+</div>
+<div id="ensemble-des-fichiers-dans-le-dossier-mapping" class="section level3">
+<h3>Ensemble des fichiers dans le dossier MAPPING</h3>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">ls</span> -ltrh ~/M4_Eval/MAPPING/</span>
+<span id="cb15-2"><a href="#cb15-2"></a></span>
+<span id="cb15-3"><a href="#cb15-3"></a>[<span class="ex">vmarinesteban@clust-slurm-client</span> M4_Eval]$ ls -ltrh ~/M4_Eval/MAPPING/</span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="ex">total</span> 2.2G</span>
+<span id="cb15-5"><a href="#cb15-5"></a><span class="ex">-rw-rw-r--</span> 1 vmarinesteban vmarinesteban 1.4G Aug 29 02:20 SRR10390685.bam</span>
+<span id="cb15-6"><a href="#cb15-6"></a><span class="ex">-rw-rw-r--</span> 1 vmarinesteban vmarinesteban 766M Aug 29 02:42 SRR10390685.sorted.bam</span>
+<span id="cb15-7"><a href="#cb15-7"></a><span class="ex">-rw-rw-r--</span> 1 vmarinesteban vmarinesteban  14K Aug 29 02:44 SRR10390685.sorted.bam.bai</span></code></pre></div>
+</div>
+</div>
+<div id="extraire-dans-un-fichier-bam-les-reads-chevauchant-à-au-moins-50-le-gène-trmnf" class="section level2">
+<h2>Extraire dans un fichier BAM les reads chevauchant à au moins 50% le gène trmNF</h2>
+<div id="retrouver-les-lignes-du-fichier-.gff-contenant-le-nom-du-gène-trmnf" class="section level3">
+<h3>Retrouver les lignes du fichier .gff contenant le nom du gène trmNF</h3>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1"></a><span class="bu">cd</span> ~/M4_Eval/INPUT_genome_files/</span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="fu">gunzip</span> GCF_000009045.1_ASM904v1_genomic.gff.gz</span>
+<span id="cb16-3"><a href="#cb16-3"></a></span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="bu">cd</span> ~/M4_Eval</span>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="fu">grep</span> trmNF INPUT_genome_files/GCF_000009045.1_ASM904v1_genomic.gff \</span>
+<span id="cb16-6"><a href="#cb16-6"></a><span class="kw">|</span> <span class="fu">awk</span> <span class="st">&#39;($3 == &quot;gene&quot;)&#39;</span>\</span>
+<span id="cb16-7"><a href="#cb16-7"></a><span class="op">&gt;</span> gene_trmNF/trmNF_gene.gff</span>
+<span id="cb16-8"><a href="#cb16-8"></a></span>
+<span id="cb16-9"><a href="#cb16-9"></a><span class="fu">cat</span> gene_trmNF/trmNF_gene.gff</span>
+<span id="cb16-10"><a href="#cb16-10"></a><span class="co">#NC_000964.3     RefSeq  gene    42917   43660   .       +       .       ID=gene-BSU_00340;Name=trmNF;gbkey=Gene;gene=trmNF;gene_biotype=protein_coding;locus_tag=BSU_00340;old_locus_tag=BSU00340</span></span></code></pre></div>
+</div>
+<div id="inspection-du-fichier-.gff-du-gene-trmnf" class="section level3">
+<h3>Inspection du fichier .gff du gene trmNF</h3>
+<p>Je vérifie la ligne sélectionnée. Ceci permet de confirmer que le gène trmNF a été bien choisi et nous permet de savoir des informations telles que la taille du gène (744 bp, coordonnées de début et fin inclues : 42917 à 43660 sur le génome) et qu’il est codé par le brin + du génome.</p>
+</div>
+<div id="récupérer-la-séquence-du-gène-trmnf-avec-bedtools" class="section level3">
+<h3>Récupérer la séquence du gène trmNF avec bedtools</h3>
+<p>Pour obtenir cette séquence on croise le fichier de séquence du génome en format fasta (option -fi de getfasta) (fichier INPUT_genome_files/GCF_000009045.1_ASM904v1_genomic.fna) avec le fichier des annotations du gène trmNF (fichier gene_trmNF/trmNF_gene.gff). Ce dernier fichier (.gff) informe la position qui ont sur le génome les nucléotides du début et de la fin de la séquence du gène. Apporte donc la tranche de nucléotides à extraire de la séquence du génome (option -bed de getfasta).</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1"></a><span class="ex">module</span> load bedtools</span>
+<span id="cb17-2"><a href="#cb17-2"></a></span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="bu">cd</span> ~/M4_Eval</span>
+<span id="cb17-4"><a href="#cb17-4"></a></span>
+<span id="cb17-5"><a href="#cb17-5"></a><span class="ex">srun</span> bedtools getfasta \</span>
+<span id="cb17-6"><a href="#cb17-6"></a>-fi INPUT_genome_files/GCF_000009045.1_ASM904v1_genomic.fna \</span>
+<span id="cb17-7"><a href="#cb17-7"></a>-bed gene_trmNF/trmNF_gene.gff \</span>
+<span id="cb17-8"><a href="#cb17-8"></a><span class="op">&gt;</span> gene_trmNF/trmNF_gene.fasta</span>
+<span id="cb17-9"><a href="#cb17-9"></a></span>
+<span id="cb17-10"><a href="#cb17-10"></a><span class="co"># Regarder le fichier </span></span>
+<span id="cb17-11"><a href="#cb17-11"></a><span class="fu">cat</span> gene_trmNF/trmNF_gene.fasta</span>
+<span id="cb17-12"><a href="#cb17-12"></a></span>
+<span id="cb17-13"><a href="#cb17-13"></a><span class="co"># longueur de la ligne la plus longue du fichier</span></span>
+<span id="cb17-14"><a href="#cb17-14"></a><span class="fu">wc</span> -L gene_trmNF/trmNF_gene.fasta</span>
+<span id="cb17-15"><a href="#cb17-15"></a><span class="co">#744 gene_trmNF/trmNF_gene.fasta</span></span></code></pre></div>
+</div>
+<div id="inspection-du-fichier-.gff-du-gène-trmnf" class="section level3">
+<h3>Inspection du fichier .gff du gène trmNF</h3>
+<p>Une inspection du fichier crée avec les commandes cat montre un fichier de deux lignes. Dans la première ligne du fichier fasta les informations de la séquence. Elle correspond aux coordonnées 42916-43660 du fichier originel du génome (C_000964.3). Dans la seconde ligne on voit une séquence de nucléotides. Une inspection de cette seconde ligne avec la commande wc -L permet de vérifier que la longueur de la séquence est de 744nucléotides, comme attendu.</p>
+</div>
+</div>
+<div id="explorer-la-couverture-et-profondeur-de-séquençage-du-gène-trmnf" class="section level2">
+<h2>Explorer la couverture et profondeur de séquençage du gène trmNF</h2>
+<div id="récupérer-les-reads-totales-et---de-la-librairie-srr10390685-mappée-srr10390685.bam-dont-au-moins-50-de-la-séquence-option--f-0.50-chevauche-le-gène-trmnf" class="section level3">
+<h3>Récupérer les reads totales (+ et -) de la librairie SRR10390685 mappée (SRR10390685.bam) dont au moins 50% de la séquence (option -f 0.50) chevauche le gène trmNF</h3>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1"></a><span class="bu">cd</span> ~/M4_Eval</span>
+<span id="cb18-2"><a href="#cb18-2"></a></span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="co"># Sélection des reads chevauchant le gene trmNF</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="ex">srun</span> bedtools intersect \</span>
+<span id="cb18-5"><a href="#cb18-5"></a>-a MAPPING/SRR10390685.bam -b gene_trmNF/trmNF_gene.gff -f 0.50 \</span>
+<span id="cb18-6"><a href="#cb18-6"></a><span class="op">&gt;</span> gene_trmNF/SRR10390685_on_trmNF_50.bam</span>
+<span id="cb18-7"><a href="#cb18-7"></a></span>
+<span id="cb18-8"><a href="#cb18-8"></a><span class="co"># Organiser les reads sélectionnées</span></span>
+<span id="cb18-9"><a href="#cb18-9"></a><span class="ex">samtools</span> sort gene_trmNF/SRR10390685_on_trmNF_50.bam  -o gene_trmNF/SRR10390685_on_trmNF_50.sorted.bam</span>
+<span id="cb18-10"><a href="#cb18-10"></a></span>
+<span id="cb18-11"><a href="#cb18-11"></a><span class="co"># Transformer le fichier .bam en .bed pour manipuler plus facilement les intervalles</span></span>
+<span id="cb18-12"><a href="#cb18-12"></a><span class="ex">srun</span> bedtools bamtobed -i gene_trmNF/SRR10390685_on_trmNF_50.sorted.bam \</span>
+<span id="cb18-13"><a href="#cb18-13"></a>-split \</span>
+<span id="cb18-14"><a href="#cb18-14"></a><span class="op">&gt;</span> gene_trmNF/SRR10390685_on_trmNF_50.sorted.bed</span>
+<span id="cb18-15"><a href="#cb18-15"></a></span>
+<span id="cb18-16"><a href="#cb18-16"></a><span class="co"># Comptage de reads sélectionnées</span></span>
+<span id="cb18-17"><a href="#cb18-17"></a><span class="fu">wc</span> -l gene_trmNF/SRR10390685_on_trmNF_50.sorted.bed</span>
+<span id="cb18-18"><a href="#cb18-18"></a><span class="co"># 2848 gene_trmNF/SRR10390685_on_trmNF_50.sorted.bed</span></span>
+<span id="cb18-19"><a href="#cb18-19"></a></span>
+<span id="cb18-20"><a href="#cb18-20"></a><span class="co"># Nombre de reads sélectionnées dans la direction sens</span></span>
+<span id="cb18-21"><a href="#cb18-21"></a><span class="fu">grep</span> + gene_trmNF/SRR10390685_on_trmNF_50.sorted.bed <span class="kw">|</span> <span class="fu">wc</span> -l</span>
+<span id="cb18-22"><a href="#cb18-22"></a><span class="co">#1402</span></span>
+<span id="cb18-23"><a href="#cb18-23"></a></span>
+<span id="cb18-24"><a href="#cb18-24"></a><span class="co"># Nombre de reads sélectionnées dans la direction anti-sens</span></span>
+<span id="cb18-25"><a href="#cb18-25"></a><span class="fu">grep</span> - gene_trmNF/SRR10390685_on_trmNF_50.sorted.bed <span class="kw">|</span> <span class="fu">wc</span> -l</span>
+<span id="cb18-26"><a href="#cb18-26"></a><span class="co">#1446</span></span>
+<span id="cb18-27"><a href="#cb18-27"></a></span>
+<span id="cb18-28"><a href="#cb18-28"></a></span>
+<span id="cb18-29"><a href="#cb18-29"></a><span class="co"># Pour information, la même procédure sans filtrage du pourcentage de chevauchement du gène trmNF sélectionne 570 reads de plus, 3418 reads au total </span></span>
+<span id="cb18-30"><a href="#cb18-30"></a><span class="ex">srun</span> bedtools intersect \</span>
+<span id="cb18-31"><a href="#cb18-31"></a>-a MAPPING/SRR10390685.bam -b gene_trmNF/trmNF_gene.gff \</span>
+<span id="cb18-32"><a href="#cb18-32"></a><span class="op">&gt;</span> gene_trmNF/SRR10390685_on_trmNF.bam</span>
+<span id="cb18-33"><a href="#cb18-33"></a></span>
+<span id="cb18-34"><a href="#cb18-34"></a><span class="ex">srun</span> bedtools bamtobed -i gene_trmNF/SRR10390685_on_trmNF.bam \</span>
+<span id="cb18-35"><a href="#cb18-35"></a>-split \</span>
+<span id="cb18-36"><a href="#cb18-36"></a><span class="op">&gt;</span> gene_trmNF/SRR10390685_on_trmNF.bed</span>
+<span id="cb18-37"><a href="#cb18-37"></a></span>
+<span id="cb18-38"><a href="#cb18-38"></a><span class="fu">wc</span> -l gene_trmNF/SRR10390685_on_trmNF.bed</span>
+<span id="cb18-39"><a href="#cb18-39"></a><span class="co"># 3418 gene_trmNF/SRR10390685_on_trmNF.bed</span></span></code></pre></div>
+</div>
+<div id="couverture-du-gène-trmnf-par-les-reads-sélectionnées-explorée-avec-bedtools-coverage" class="section level3">
+<h3>Couverture du gène trmNF par les reads sélectionnées, explorée avec bedtools coverage</h3>
+<p>L’outil coverage calcule à la fois la profondeur et l’étendue de la couverture des entités du fichier B sur les entités du fichier A. L’option -hist rapporte un histogramme de couverture pour chaque entité individuelle dans A ainsi que pour l’ensemble des entités dans A. Sortie (délimitée par des tabulations) après chaque fonction dans A: 1) profondeur 2) # bases en profondeur 3) taille de A 4)% de A en profondeur</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1"></a><span class="bu">cd</span> ~/M4_Eval</span>
+<span id="cb19-2"><a href="#cb19-2"></a></span>
+<span id="cb19-3"><a href="#cb19-3"></a><span class="co"># Histogramme de couvertures</span></span>
+<span id="cb19-4"><a href="#cb19-4"></a><span class="ex">srun</span> bedtools coverage \</span>
+<span id="cb19-5"><a href="#cb19-5"></a>-a gene_trmNF/trmNF_gene.gff \</span>
+<span id="cb19-6"><a href="#cb19-6"></a>-b gene_trmNF/SRR10390685_on_trmNF_50.sorted.bed \</span>
+<span id="cb19-7"><a href="#cb19-7"></a>-hist</span>
+<span id="cb19-8"><a href="#cb19-8"></a></span>
+<span id="cb19-9"><a href="#cb19-9"></a><span class="co"># Couverture par position</span></span>
+<span id="cb19-10"><a href="#cb19-10"></a><span class="ex">srun</span> bedtools coverage \</span>
+<span id="cb19-11"><a href="#cb19-11"></a>-a gene_trmNF/trmNF_gene.gff \</span>
+<span id="cb19-12"><a href="#cb19-12"></a>-b gene_trmNF/SRR10390685_on_trmNF_50.sorted.bed \</span>
+<span id="cb19-13"><a href="#cb19-13"></a>-d</span>
+<span id="cb19-14"><a href="#cb19-14"></a></span>
+<span id="cb19-15"><a href="#cb19-15"></a><span class="co"># Couverture moyenne </span></span>
+<span id="cb19-16"><a href="#cb19-16"></a><span class="ex">srun</span> bedtools coverage \</span>
+<span id="cb19-17"><a href="#cb19-17"></a>-a gene_trmNF/trmNF_gene.gff \</span>
+<span id="cb19-18"><a href="#cb19-18"></a>-b gene_trmNF/SRR10390685_on_trmNF_50.sorted.bed \</span>
+<span id="cb19-19"><a href="#cb19-19"></a>-mean</span>
+<span id="cb19-20"><a href="#cb19-20"></a></span>
+<span id="cb19-21"><a href="#cb19-21"></a><span class="co">#NC_000964.3     RefSeq  gene    42917   43660   .       +       .       ID=gene-BSU_00340;Name=trmNF;gbkey=Gene;gene=trmNF;gene_biotype=protein_coding;locus_tag=BSU_00340;old_locus_tag=BSU00340       516.4314575</span></span></code></pre></div>
+</div>
+<div id="inspection-des-résultats-de-la-couverture-de-séquençage-du-gène-trmnf" class="section level3">
+<h3>Inspection des résultats de la couverture de séquençage du gène trmNF</h3>
+<p>La sélectionné des reads qui ont été alignées sur le gène trmNF a été fait avec un filtre pour choisir les reads dont au moins 50% de la longueur du read chevauché avec le gène. Ainsi, 28548 reads on été sélectionnées. Si on élimine ce filtre, 3418 reads auraient été sélectionnées.</p>
+<p>Parmi les 28548 reads sélectionnées, 1402 vient du séquençage en direction sens et 1446 du séquençage en direction anti-sens.</p>
+<p>Les données de couverture générées par bedtools coverage -hist pour l’ensemble de nucléotides révèlent des profondeurs par nucléotide entre 262 et 581. Avec l’option -d on peut savoir la couverture de chaque nucléotide du gène d’intérêt. L’option -mean indique que le profondeur moyenne de séquençage pour chaque nucléotide du gène a été de 516.4314575.</p>
+</div>
+</div>
+</div>
+<div id="organisation-du-repretoire-du-projet" class="section level1">
+<h1>Organisation du repretoire du projet</h1>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1"></a><span class="ex">tree</span> ~/M4_Eval/</span></code></pre></div>
+<p><img src="tree_working_repertoire.JPG" /></p>
+</div>
+<div id="conclusion-et-remerciements" class="section level1">
+<h1>Conclusion et remerciements</h1>
+<p>Ce travail m’a permis de réviser les étapes pour le contrôle de qualité des fichiers fastq d’un séquençage, l’alignement sur un génome de référence et l’inspection de couverture et profondeur de séquençage d’un gène individuel. La qualité et profondeur de séquençage de cet exercice sont très bonnes (à mon avis) et n’ont pas posé de grands soucis. Merci pour cette formation du DU-Bii qui a été très dense, appliquée et intéressante :-).</p>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3,h4",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
